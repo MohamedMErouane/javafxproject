@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="320.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.TodoListController">
+    <children>
+        <Label layoutX="14.0" layoutY="14.0" text="Todo List" />
+        <TextField fx:id="taskTextField" layoutX="14.0" layoutY="44.0" promptText="Enter a task" />
+        <Button text="Add Task" onAction="#handleAddTask" layoutX="14.0" layoutY="74.0" />
+        <ListView fx:id="todoListView" layoutX="14.0" layoutY="104.0" prefHeight="210.0" prefWidth="290.0" />
+        <Button text="Toggle Completed" onAction="#handleToggleCompleted" layoutX="14.0" layoutY="324.0" />
+        <Button text="Delete Task" onAction="#handleDeleteTask" layoutX="120.0" layoutY="324.0" />
+        <Label fx:id="todoMessage" layoutX="14.0" layoutY="354.0" prefHeight="23.0" prefWidth="290.0" textFill="#f2590c" />
+    </children>
+</AnchorPane>

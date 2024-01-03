@@ -1,0 +1,39 @@
+ private static void createTable(Connection connection) throws SQLException {
+        String createTableEtudiants = "CREATE TABLE Etudiants (" +
+            "ID_Etudiant INT PRIMARY KEY," +
+            "Nom VARCHAR(50)," +
+            "Prénom VARCHAR(50)," +
+            "Date_de_naissance DATE," +
+            "ID_Departement INT," +
+            "FOREIGN KEY (ID_Departement) REFERENCES Départements(ID_Departement)" +
+            ");";
+    
+        String createTableDepartements = "CREATE TABLE Departements (" +
+            "ID_Departement INT PRIMARY KEY," +
+            "Nom_Departement VARCHAR(100)," +
+            "Responsable VARCHAR(100)" +
+            ");";
+    
+        String createTableCours = "CREATE TABLE Cours (" +
+            "ID_Cours INT PRIMARY KEY," +
+            "Titre_Cours VARCHAR(100)," +
+            "Professeur VARCHAR(100)," +
+            "ID_Departement INT," +
+            "FOREIGN KEY (ID_Departement) REFERENCES Départements(ID_Departement)" +
+            ");";
+    
+        String createTableInscriptions = "CREATE TABLE Inscriptions (" +
+            "ID_Inscription INT PRIMARY KEY," +
+            "ID_Etudiant INT," +
+            "ID_Cours INT," +
+            "Note DECIMAL(5,2)," +
+            "FOREIGN KEY (ID_Etudiant) REFERENCES Etudiants(ID_Etudiant)," +
+            "FOREIGN KEY (ID_Cours) REFERENCES Cours(ID_Cours)" +
+            ");";
+        try (Statement preparedStatement = connection.createStatement()) {
+            preparedStatement.executeUpdate(createTableCours);
+             preparedStatement.executeUpdate(createTableDepartements);
+              preparedStatement.executeUpdate(createTableInscriptions);
+               preparedStatement.executeUpdate(createTableEtudiants);
+        }
+    }
